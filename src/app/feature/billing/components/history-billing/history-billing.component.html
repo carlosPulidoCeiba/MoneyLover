@@ -1,0 +1,35 @@
+<div class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="card col-lg-6 col-md-8 mx-auto">
+            <div class="p-3">
+                Historial
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Destino</th>
+                        <th scope="col">Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data">
+                        <td>
+                            {{item.date}}
+                        </td>
+                        <td>
+                            {{item.name}}
+                        </td>
+                        <td>
+                            {{item.receiver}}
+                        </td>
+                        <td>
+                            {{item.value}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

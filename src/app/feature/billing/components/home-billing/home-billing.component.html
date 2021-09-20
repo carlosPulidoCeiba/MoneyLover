@@ -1,0 +1,29 @@
+
+    <div class=" mt-3 p-5 center">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-lg-6 mb-5" *ngFor="let option of optionCard">
+                        <div class="card card-option shadow rounded" [routerLink]="option.url">
+                            {{option.nombre}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card my-perfil shadow rounded">
+                    <div class="card-body">
+                        <div class="card-title">
+                            Mi dinero
+                        </div>
+                        <div class="value">
+                            {{ currentValue |currency}}
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        Recargar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
