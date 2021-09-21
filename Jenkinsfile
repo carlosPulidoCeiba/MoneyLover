@@ -33,7 +33,10 @@ pipeline {
 
         stage('Sonar Scanner Coverage') {
             steps{
-                sh 'npm run sonar'
+                echo '------------>Análisis de código estático<------------'
+                withSonarQubeEnv('Sonar') {
+                    sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner" 
+                }
             }
         }
 
