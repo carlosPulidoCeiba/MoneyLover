@@ -23,14 +23,26 @@ pipeline {
                     gitTool: 'Default', 
                     submoduleCfg: [], 
                     userRemoteConfigs: [[
-                    credentialsId: 'GitHub_carlos.pulido', 
-                    url:'https://github.com/carlosPulidoCeiba/MoneyLover'
+                        credentialsId: 'GitHub_carlos.pulido', 
+                        url:'https://github.com/carlosPulidoCeiba/MoneyLover'
                     ]]
                 ])
             }
         }
 
-        stage('Build') {
+        stage('Testing'){
+            steps{
+                sh 'npx ng test --no-watch --code-coverage'
+            }
+        }
+
+        stage('Sonar Scanner Coverage') {
+            steps{
+                sh 'npm run sonar'
+            }
+        }
+
+        stage('Build'){
             steps {
                 sh 'ng build --prod '
             }
