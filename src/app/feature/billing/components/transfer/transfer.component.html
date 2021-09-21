@@ -28,7 +28,7 @@
                     <label class="col-form-label">
                         Monto
                     </label>
-                    <input type="text" class="form-control" formControlName="value">
+                    <input type="number" class="form-control" formControlName="value">
                     <ng-container *ngIf="showMessegeError('value')">
                         <error-field [text]="messegeError('value')"></error-field>
                     </ng-container>
@@ -45,10 +45,10 @@
                 </div>
 
                 <div class="mt-3 row">
-                    <button type="button" class="btn btn-danger mr-3">
+                    <button type="button" class="btn btn-danger mr-3" (click)="goToBack()">
                         Cancelar
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" [disabled]="form.invalid" (click)="send()">
                         Enviar
                     </button>
                 </div>

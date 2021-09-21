@@ -4,7 +4,7 @@ import * as moment from "moment";
 export class TransferModel {
   FormTransfer() {
     const currentDate = new Date();
-    const dateFormat = moment(currentDate).format("DD MMMM YYYY");
+    const dateFormat = moment(currentDate).format("DD-MMMM-YYYY");
     return new FormGroup({
       date: new FormControl(dateFormat, {
         validators: [Validators.required, Validators.nullValidator],

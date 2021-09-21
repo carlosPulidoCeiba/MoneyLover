@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: '/prospectos-vida'
+  apiMock: 'http://localhost:3000/'
 };
 
 /*
