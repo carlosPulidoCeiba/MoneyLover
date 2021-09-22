@@ -1,23 +1,23 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { HistoryBillingComponent } from "./components/history-billing/history-billing.component";
-import { HomeBillingComponent } from "./components/home-billing/home-billing.component";
-import { TransferComponent } from "./components/transfer/transfer.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HistoryBillingComponent } from './components/history-billing/history-billing.component';
+import { HomeBillingComponent } from './components/home-billing/home-billing.component';
+import { TransferComponent } from './components/transfer/transfer.component';
 
 const routes: Routes = [
   {
-    path: "",
+    path: '',
     children: [
       {
-        path: "",
+        path: '',
         component: HomeBillingComponent,
       },
       {
-        path: "history",
+        path: 'history',
         component: HistoryBillingComponent,
       },
       {
-        path: "transfer",
+        path: 'transfer',
         component: TransferComponent
       }
     ],

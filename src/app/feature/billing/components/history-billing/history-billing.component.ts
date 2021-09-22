@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { ToastService } from "@shared/services/toast.service";
-import { Transfer } from "../../models/transfer.interface";
-import { BillingService } from "../../services/billing.service";
+import { Component, OnInit } from '@angular/core';
+import { ToastService } from '@shared/services/toast.service';
+import { Transfer } from '../../models/transfer.interface';
+import { BillingService } from '../../services/billing.service';
 
 @Component({
-  selector: "app-history-billing",
-  templateUrl: "./history-billing.component.html",
-  styleUrls: ["./history-billing.component.scss"],
+  selector: 'app-history-billing',
+  templateUrl: './history-billing.component.html',
+  styleUrls: ['./history-billing.component.scss'],
 })
 export class HistoryBillingComponent implements OnInit {
   public transfers: Transfer[] = [];
 
   constructor(
-    private billingService: BillingService,
+    protected billingService: BillingService,
     private toastService: ToastService
   ) {}
 

@@ -11,7 +11,7 @@ export class BillingService {
 
   public baseUrl = environment.apiMock;
 
-  constructor(private httpService: HttpService) { }
+  constructor(protected httpService: HttpService) { }
 
   transfer(data: Transfer): Observable<Transfer> {
     const url = this.baseUrl + 'transfers';

@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ToastService } from "@shared/services/toast.service";
-import { TransferModel } from "../../models/transfer.model";
-import { BillingService } from "../../services/billing.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '@shared/services/toast.service';
+import { TransferModel } from '../../models/transfer.model';
+import { BillingService } from '../../services/billing.service';
 
 @Component({
-  selector: "app-transfer",
-  templateUrl: "./transfer.component.html",
-  styleUrls: ["./transfer.component.scss"],
+  selector: 'app-transfer',
+  templateUrl: './transfer.component.html',
+  styleUrls: ['./transfer.component.scss'],
 })
 export class TransferComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class TransferComponent implements OnInit {
   constructor(
     private router: Router,
     private toastService: ToastService,
-    private billingService: BillingService,
+    protected billingService: BillingService,
     private activeRoute: ActivatedRoute
   ) { }
 
@@ -43,12 +43,12 @@ export class TransferComponent implements OnInit {
 
   enum(control: string): string {
     switch (control) {
-      case "name":
-        return "nombre";
-      case "value":
-        return "monto";
-      case "receiver":
-        return "destino";
+      case 'name':
+        return 'nombre';
+      case 'value':
+        return 'monto';
+      case 'receiver':
+        return 'destino';
       default:
         break;
     }
@@ -59,7 +59,7 @@ export class TransferComponent implements OnInit {
   }
 
   goToBack(): void {
-    this.router.navigate(["billing"]);
+    this.router.navigate(['billing']);
   }
 
   showMessegeError(controlName: string): boolean {
