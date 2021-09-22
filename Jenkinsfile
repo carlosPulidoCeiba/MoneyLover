@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-         stage('Install') {
+         stage('Tests') {
             steps {
                 sh 'npm run test'
             }
