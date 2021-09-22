@@ -15,7 +15,7 @@ export class ToastService {
       icon: 'success',
       showConfirmButton: true,
       confirmButtonText: 'Ok'
-    })
+    });
   }
 
   public toastDeleteSucces() {
@@ -25,7 +25,7 @@ export class ToastService {
       icon: 'success',
       showConfirmButton: true,
       confirmButtonText: 'Ok'
-    })
+    });
   }
 
   public toastConfirmDelete() {
@@ -35,7 +35,7 @@ export class ToastService {
         cancelButton: 'btn btn-danger mr-3'
       },
       buttonsStyling: false
-    })
+    });
   
     return swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
@@ -45,7 +45,7 @@ export class ToastService {
       confirmButtonText: 'Aceptar',
       cancelButtonText: 'Cancelar',
       reverseButtons: true
-    })
+    });
   }
 
 }

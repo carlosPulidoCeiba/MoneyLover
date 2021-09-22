@@ -31,7 +31,8 @@ describe('HomeBillingComponent', () => {
   });
 
   it('create routes', () => {
-    expect(component.optionCard.length).toEqual(2);
+    const quantityRoutes = 2;
+    expect(component.optionCard.length).toEqual(quantityRoutes);
   });
 
 

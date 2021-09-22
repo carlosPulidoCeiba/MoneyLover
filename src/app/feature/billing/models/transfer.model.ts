@@ -2,7 +2,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 export class TransferModel {
-  FormTransfer() {
+  formTransfer() {
     const currentDate = new Date();
     const dateFormat = moment(currentDate).format('DD-MMMM-YYYY');
     return new FormGroup({

@@ -6,13 +6,12 @@ import { BillingService } from '../../services/billing.service';
 
 @Component({
   selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.scss'],
+  templateUrl: './transfer.component.html'
 })
 export class TransferComponent implements OnInit {
 
   public isToMe = false;
-  public form = new TransferModel().FormTransfer();
+  public form = new TransferModel().formTransfer();
 
   constructor(
     private router: Router,

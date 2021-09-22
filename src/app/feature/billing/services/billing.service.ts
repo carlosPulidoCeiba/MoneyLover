@@ -24,7 +24,7 @@ export class BillingService {
   }
 
   deleteTransfer(id: number): Observable<Transfer> {
-    const url = this.baseUrl + 'transfers/' + id;
+    const url = `${this.baseUrl}transfers/${id}`;
     return this.httpService.doDelete(url);
   }
 }

@@ -31,7 +31,7 @@ export class HistoryBillingComponent implements OnInit {
       if( result.isConfirmed) {
         this.deleteRegister(id);
       }
-    })
+    });
   }
 
   deleteRegister(id: number): void {
@@ -40,6 +40,6 @@ export class HistoryBillingComponent implements OnInit {
         this.getTransfers();
         this.toastService.toastDeleteSucces();
       }
-    )
+    );
   }
 }
