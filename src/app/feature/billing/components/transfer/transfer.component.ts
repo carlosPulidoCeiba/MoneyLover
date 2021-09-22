@@ -31,7 +31,7 @@ export class TransferComponent implements OnInit {
     )
   }
 
-  configIsToMe() {
+  configIsToMe(): void {
     this.form.get('name').disable();
     this.form.get('receiver').disable();
     this.form.patchValue({

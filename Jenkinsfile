@@ -6,11 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Install') {
-            steps {
-                sh 'npm install'
-            }
-        }
 
         stage('Checkout'){
             steps{
@@ -27,6 +22,18 @@ pipeline {
                         url:'https://github.com/carlosPulidoCeiba/MoneyLover'
                     ]]
                 ])
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+         stage('Install') {
+            steps {
+                sh 'npm run test'
             }
         }
 
