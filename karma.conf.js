@@ -29,7 +29,7 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml', 'junit'],
+    reporters: ['progress', 'kjhtml', 'junit', 'sonarqube'],
     htmlReporter: {
       outputFile: 'reports/unit/units.html',
 
