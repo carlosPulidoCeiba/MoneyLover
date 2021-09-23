@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SecurityGuard } from './guard/security.guard';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpService } from './services/http.service';
