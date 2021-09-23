@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json -o",
     "build": "ng build --prod",
-    "test": "ng test --no-watch --code-coverage",
+    "test": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "sonar": "sonar-scanner"
@@ -47,9 +47,9 @@
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "karma-junit-reporter": "^2.0.1",
+    "karma-sonarqube-reporter": "^1.4.0",
     "protractor": "~7.0.0",
     "protractor-beautiful-reporter": "^1.3.6",
-    "sonar-scanner": "^3.1.0",
     "ts-node": "~9.1.1",
     "tslint": "~6.1.0",
     "typescript": "~4.1.5"
