@@ -28,7 +28,7 @@ export class TransferComponent implements OnInit {
           this.configIsToMe();
         }
       }
-    )
+    );
   }
 
   configIsToMe(): void {
