@@ -1,5 +1,7 @@
 pipeline {
-    agent 'Slave_Induccion'
+    agent {
+        label 'Slave_Induccion'
+    }
 
      triggers {
         pollSCM('* * * * *')
