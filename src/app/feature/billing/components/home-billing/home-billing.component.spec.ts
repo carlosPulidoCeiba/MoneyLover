@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
-import { BillingService } from '../../services/billing.service';
+import { BillingService } from '../../shared/services/billing.service';
 import { HomeBillingComponent } from './home-billing.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

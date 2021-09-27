@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from '@core/modelo/menu-item';
-import { BillingService } from '../../services/billing.service';
+import { BillingService } from '../../shared/services/billing.service';
 
 @Component({
   selector: 'app-home-billing',
@@ -26,10 +26,10 @@ export class HomeBillingComponent implements OnInit {
   public getTransfers(): void {
     this.billingService.getTransfers().subscribe((res) => {
       const findCurrentUser = res.filter((register) => {
-        return register.receiver.toLowerCase() === 'carlos';
+        return register.destino.toLowerCase() === 'carlos';
       });
       findCurrentUser.forEach((element) => {
-        this.currentValue += element.value;
+        this.currentValue += element.monto;
       });
     });
   }

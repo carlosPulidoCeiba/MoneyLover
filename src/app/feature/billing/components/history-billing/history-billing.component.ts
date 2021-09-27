@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from '@shared/services/toast.service';
-import { Transfer } from '../../models/transfer.interface';
-import { BillingService } from '../../services/billing.service';
+import { Transfer } from '../../shared/models/transfer.interface';
+import { BillingService } from '../../shared/services/billing.service';
 
 @Component({
   selector: 'app-history-billing',
@@ -9,12 +9,13 @@ import { BillingService } from '../../services/billing.service';
   styleUrls: ['./history-billing.component.scss'],
 })
 export class HistoryBillingComponent implements OnInit {
+
   public transfers: Transfer[] = [];
 
   constructor(
     protected billingService: BillingService,
     private toastService: ToastService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getTransfers();
@@ -26,12 +27,17 @@ export class HistoryBillingComponent implements OnInit {
     });
   }
 
-  confirmDelete(id: number): void {
+  confirmDelete(id: number): boolean {
+    let confirmDelete = true;
     this.toastService.toastConfirmDelete().then((result) => {
-      if( result.isConfirmed) {
+      if (result.isConfirmed) {
+        confirmDelete = true;
         this.deleteRegister(id);
+      } else {
+        confirmDelete = false;
       }
     });
+    return confirmDelete;
   }
 
   deleteRegister(id: number): void {

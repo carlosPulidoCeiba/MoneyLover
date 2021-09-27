@@ -9,22 +9,20 @@ import { Transfer } from '../models/transfer.interface';
 })
 export class BillingService {
 
-  public baseUrl = environment.apiMock;
-
   constructor(protected httpService: HttpService) { }
 
-  transfer(data: Transfer): Observable<Transfer> {
-    const url = this.baseUrl + 'transfers';
+  transfer(data: Transfer): Observable<boolean> {
+    const url = environment.apiMock + 'transfers';
     return this.httpService.doPost(url, data);
   }
 
   getTransfers():Observable<Transfer[]> {
-    const url = this.baseUrl + 'transfers';
+    const url = environment.apiMock + 'transfers';
     return this.httpService.doGet(url);
   }
 
-  deleteTransfer(id: number): Observable<Transfer> {
-    const url = `${this.baseUrl}transfers/${id}`;
+  deleteTransfer(id: number): Observable<boolean> {
+    const url = `${environment.apiMock}transfers/${id}`;
     return this.httpService.doDelete(url);
   }
 }

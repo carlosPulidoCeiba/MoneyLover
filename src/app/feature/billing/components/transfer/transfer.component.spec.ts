@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
-import { BillingService } from '../../services/billing.service';
+import { BillingService } from '../../shared/services/billing.service';
 
 import { TransferComponent } from './transfer.component';
 
@@ -29,4 +29,17 @@ describe('TransferComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('create transfer', () => {
+    const data = {
+      "fecha": "21-September-2021",
+      "nombre": "Carlos",
+      "destino": "Carlos",
+      "monto": 30000,
+      "id": 1
+    }
+    expect(component.postTransfer(data)).toBeTruthy();
+  });
+
+
 });

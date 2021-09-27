@@ -29,14 +29,14 @@
                             {{item.value | currency}}
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger" (click)="confirmDelete(item.id)">
+                            <button type="button" class="btn btn-danger" (click)="confirmDelete(item.id)" id="button_delete">
                                 Eliminar
                             </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="alert alert-warning" role="alert" *ngIf="transfers.length === 0">
+            <div class="alert alert-warning" role="alert" *ngIf="transfers.length === 0" id="show_no_transfers">
                 No existen transferencias realizadas
             </div>
         </div>

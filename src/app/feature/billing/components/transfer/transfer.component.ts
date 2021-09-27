@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '@shared/services/toast.service';
-import { TransferModel } from '../../models/transfer.model';
-import { BillingService } from '../../services/billing.service';
+import * as moment from 'moment';
+import { Transfer } from '../../shared/models/transfer.interface';
+import { BillingService } from '../../shared/services/billing.service';
 
 @Component({
   selector: 'app-transfer',
@@ -11,7 +13,7 @@ import { BillingService } from '../../services/billing.service';
 export class TransferComponent implements OnInit {
 
   public isToMe = false;
-  public form = new TransferModel().formTransfer();
+  public form: FormGroup;
 
   constructor(
     private router: Router,
@@ -21,6 +23,7 @@ export class TransferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.createForm();
     this.activeRoute.queryParams.subscribe(
       params => {
         ({ isToMe: this.isToMe } = params);
@@ -31,30 +34,28 @@ export class TransferComponent implements OnInit {
     );
   }
 
+  createForm(): void {
+    const currentDate = new Date();
+    const dateFormat = moment(currentDate).format('DD-MMMM-YYYY');
+    this.form = new FormGroup({
+      fecha: new FormControl(dateFormat, [Validators.required, Validators.nullValidator]),
+      nombre: new FormControl('', [Validators.required, Validators.nullValidator]),
+      destino: new FormControl('', [Validators.required, Validators.nullValidator]),
+      monto: new FormControl('', [Validators.required, Validators.nullValidator]),
+    })
+  }
+
   configIsToMe(): void {
-    this.form.get('name').disable();
-    this.form.get('receiver').disable();
+    this.form.get('nombre').disable();
+    this.form.get('destino').disable();
     this.form.patchValue({
-      name: 'Carlos',
-      receiver: 'Carlos'
+      nombre: 'Carlos',
+      destino: 'Carlos'
     });
   }
 
-  enum(control: string): string {
-    switch (control) {
-      case 'name':
-        return 'nombre';
-      case 'value':
-        return 'monto';
-      case 'receiver':
-        return 'destino';
-      default:
-        break;
-    }
-  }
-
   messegeError(control: string): string {
-    return `El campo ${this.enum(control)}, es requerido.`;
+    return `El campo ${control}, es requerido.`;
   }
 
   goToBack(): void {
@@ -67,18 +68,27 @@ export class TransferComponent implements OnInit {
     );
   }
 
-  send() {
+  send(): void {
     if (this.form.valid) {
       const formValueIsToMe = {
         ...this.form.value,
-        name: 'Carlos',
-        receiver: 'Carlos'
+        nombre: 'Carlos',
+        destino: 'Carlos'
       };
       const data = this.isToMe ? formValueIsToMe : this.form.value;
-      this.billingService.transfer(data).subscribe(() => {
-        this.toastService.toastSucces();
-        this.goToBack();
-      });
+      this.postTransfer(data);
     }
   }
+
+  postTransfer(data: Transfer): boolean {
+    let success = true;
+    this.billingService.transfer(data).subscribe(() => {
+      this.toastService.toastSucces();
+      this.goToBack();
+    }, () => {
+      success = false;
+    });
+    return success;
+  }
+
 }

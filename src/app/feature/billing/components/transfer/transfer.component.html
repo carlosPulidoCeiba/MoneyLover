@@ -11,16 +11,16 @@
                     <label class="col-form-label">
                         Fecha
                     </label>
-                    <input type="text" disabled class="form-control" formControlName="date">
+                    <input type="text" disabled class="form-control" formControlName="fecha">
                 </div>
 
                 <div class="mb-2 row">
                     <label class="col-form-label">
                         Nombre
                     </label>
-                    <input type="text" class="form-control" formControlName="name">
-                    <ng-container *ngIf="showMessegeError('name')">
-                        <error-field [text]="messegeError('name')"></error-field>
+                    <input type="text" class="form-control" formControlName="nombre">
+                    <ng-container *ngIf="showMessegeError('nombre')">
+                        <error-field [text]="messegeError('nombre')"></error-field>
                     </ng-container>
                 </div>
 
@@ -28,9 +28,9 @@
                     <label class="col-form-label">
                         Monto
                     </label>
-                    <input type="number" class="form-control" formControlName="value">
-                    <ng-container *ngIf="showMessegeError('value')">
-                        <error-field [text]="messegeError('value')"></error-field>
+                    <input type="number" class="form-control" formControlName="monto">
+                    <ng-container *ngIf="showMessegeError('monto')">
+                        <error-field [text]="messegeError('monto')"></error-field>
                     </ng-container>
                 </div>
 
@@ -38,9 +38,9 @@
                     <label class=" col-form-label">
                         Destino
                     </label>
-                    <input type="text" class="form-control" formControlName="receiver">
-                    <ng-container *ngIf="showMessegeError('receiver')">
-                        <error-field [text]="messegeError('receiver')"></error-field>
+                    <input type="text" class="form-control" formControlName="destino">
+                    <ng-container *ngIf="showMessegeError('destino')">
+                        <error-field [text]="messegeError('destino')"></error-field>
                     </ng-container>
                 </div>
 

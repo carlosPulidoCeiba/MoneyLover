@@ -3,20 +3,46 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
-import { BillingService } from '../../services/billing.service';
+import { Transfer } from '../../shared/models/transfer.interface';
+import { Transferencia } from '../../shared/models/transfer.model';
+import { BillingService } from '../../shared/services/billing.service';
 import { HistoryBillingComponent } from './history-billing.component';
+import * as Rx from 'rxjs';
 
 describe('HistoryBillingComponent', () => {
   let component: HistoryBillingComponent;
   let fixture: ComponentFixture<HistoryBillingComponent>;
+  let transferServiceStub: Partial<BillingService>;
+  let dummyTransfers: Transfer[] = [
+    new Transferencia({
+      destino: 'Jose Manuel',
+      fecha: '25-September-2021',
+      monto: 50000,
+      id: 0,
+      nombre: 'Cristian David'
+    }),
+    new Transferencia({
+      destino: 'Jose David',
+      fecha: '25-September-2021',
+      monto: 80000,
+      id: 1,
+      nombre: 'Carlos Martinez'
+    })
+  ];
+
+  transferServiceStub = {
+    getTransfers: () => {
+      return Rx.of(dummyTransfers);
+    }
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HistoryBillingComponent ],
+      declarations: [HistoryBillingComponent],
       imports: [CommonModule, RouterTestingModule, HttpClientTestingModule],
-      providers: [BillingService, HttpService]
+      providers: [{ provide: BillingService, HttpService, useValue: transferServiceStub }]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -25,7 +51,26 @@ describe('HistoryBillingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe crearse', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Debe consultar transferencias', () => {
+    component.ngOnInit();
+    expect(component.transfers).toEqual(dummyTransfers);
+  });
+
+  it('No hay transferencias', () => {
+    dummyTransfers = [];
+    component.ngOnInit();
+    fixture.detectChanges();
+    const messege = fixture.nativeElement.querySelector('#show_no_transfers');
+    expect(messege.innerText).toEqual('No existen transferencias realizadas');
+  })
+
+  it('Debe confirmar eliminar transferencia' , () => {
+    const dummyIdTransfer = 1;
+    expect(component.confirmDelete(dummyIdTransfer)).toBeTruthy();
+  });
+
 });
