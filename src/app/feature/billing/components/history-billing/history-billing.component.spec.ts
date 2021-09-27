@@ -41,8 +41,7 @@ describe('HistoryBillingComponent', () => {
       declarations: [HistoryBillingComponent],
       imports: [CommonModule, RouterTestingModule, HttpClientTestingModule],
       providers: [{ provide: BillingService, HttpService, useValue: transferServiceStub }]
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

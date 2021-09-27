@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 })
 export class ToastService {
 
-  constructor() { }
-
   public toastSucces() {
     return Swal.fire({
       title: 'Exitoso',

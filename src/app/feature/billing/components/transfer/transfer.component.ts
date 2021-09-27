@@ -42,7 +42,7 @@ export class TransferComponent implements OnInit {
       nombre: new FormControl('', [Validators.required, Validators.nullValidator]),
       destino: new FormControl('', [Validators.required, Validators.nullValidator]),
       monto: new FormControl('', [Validators.required, Validators.nullValidator]),
-    })
+    });
   }
 
   configIsToMe(): void {

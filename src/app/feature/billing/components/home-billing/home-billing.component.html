@@ -4,7 +4,7 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-6 mb-5" *ngFor="let option of optionCard">
-                        <div class="card card-option shadow rounded" [routerLink]="option.url">
+                        <div class="card card-option shadow rounded" id="options_card" [routerLink]="option.url">
                             {{option.nombre}}
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                             {{ currentValue |currency}}
                         </div>
                     </div>
-                    <div class="card-footer text-center" (click)="transferToMe()">
+                    <div class="card-footer text-center" (click)="transferToMe()" id="recargar">
                         Recargar
                     </div>
                 </div>

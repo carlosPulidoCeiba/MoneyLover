@@ -5,19 +5,48 @@ import { HomeBillingComponent } from './home-billing.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CommonModule } from '@angular/common';
-
+import { Transfer } from '../../shared/models/transfer.interface';
+import { Transferencia } from '../../shared/models/transfer.model';
+import * as Rx from 'rxjs';
 
 describe('HomeBillingComponent', () => {
   let component: HomeBillingComponent;
   let fixture: ComponentFixture<HomeBillingComponent>;
+  let transferServiceStub: Partial<BillingService>;
+  let dummyTransfers: Transfer[] = [
+    new Transferencia({
+      destino: 'Carlos',
+      fecha: '25-September-2021',
+      monto: 50000,
+      id: 0,
+      nombre: 'Jose Manuel'
+    }),
+    new Transferencia({
+      destino: 'Carlos',
+      fecha: '25-September-2021',
+      monto: 80000,
+      id: 1,
+      nombre: 'Jose David'
+    })
+  ];
+
+  const totalValue = 130000;
+
+  transferServiceStub = {
+    getTransfers: () => {
+      return Rx.of(dummyTransfers);
+    }
+  };
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HomeBillingComponent],
       imports: [CommonModule, RouterTestingModule, HttpClientTestingModule],
-      providers: [BillingService, HttpService]
-    })
-      .compileComponents();
+      providers: [
+        { provide: BillingService, HttpService, useValue: transferServiceStub }
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -26,14 +55,22 @@ describe('HomeBillingComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Debe crearse', () => {
     expect(component).toBeTruthy();
   });
 
-  it('create routes', () => {
+  it('Consula transferencias del usuario Carlos', () => {
+    expect(component.currentValue).toEqual(totalValue);
+  })
+
+  it('Crear rutas', () => {
     const quantityRoutes = 2;
     expect(component.optionCard.length).toEqual(quantityRoutes);
   });
 
+  it('Ruta transferir', () => {
+    const messege = fixture.nativeElement.querySelector('#options_card');
+    expect(messege.innerText).toEqual('Transferir');
+  })
 
 });

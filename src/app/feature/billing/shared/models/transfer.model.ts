@@ -1,4 +1,4 @@
-import { Transfer } from "./transfer.interface";
+import { Transfer } from './transfer.interface';
 
 export class Transferencia {
 
