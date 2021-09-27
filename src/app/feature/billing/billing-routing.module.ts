@@ -20,8 +20,8 @@ const routes: Routes = [
         path: 'transfer',
         component: TransferComponent
       }
-    ],
-  },
+    ]
+  }
 ];
 
 @NgModule({

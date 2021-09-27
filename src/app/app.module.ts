@@ -7,9 +7,6 @@ import { HomeComponent } from '@home/home.component';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BillingModule } from './feature/billing/billing.module';
-
-
 
 
 @NgModule({
@@ -21,11 +18,10 @@ import { BillingModule } from './feature/billing/billing.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    NgbModule,
-    BillingModule
+    NgbModule
   ],
   providers: [CookieService],
-    bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

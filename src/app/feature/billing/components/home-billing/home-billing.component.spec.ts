@@ -71,6 +71,15 @@ describe('HomeBillingComponent', () => {
   it('Ruta transferir', () => {
     const messege = fixture.nativeElement.querySelector('#options_card');
     expect(messege.innerText).toEqual('Transferir');
+  });
+
+  it('Redirigir a recarga', ()=> {
+    const spyRedirect = spyOn(component, 'transferToMe').and.callThrough();
+    const messege = fixture.nativeElement.querySelector('#recargar'); 
+    messege.click();
+
+    expect(spyRedirect).toHaveBeenCalled();
+    
   })
 
 });
