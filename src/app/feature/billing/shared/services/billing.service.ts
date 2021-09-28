@@ -21,7 +21,7 @@ export class BillingService {
     return this.httpService.doGet(url);
   }
 
-  deleteTransfer(id: number): Observable<boolean> {
+  deleteTransfer(id: number): Observable<number> {
     const url = `${environment.apiMock}transfers/${id}`;
     return this.httpService.doDelete(url);
   }

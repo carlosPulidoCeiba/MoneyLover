@@ -29,10 +29,13 @@ describe('HistoryBillingComponent', () => {
       nombre: 'Carlos Martinez'
     })
   ];
-
+  const dummyIdTransfer = 1;
   transferServiceStub = {
     getTransfers: () => {
       return Rx.of(dummyTransfers);
+    }, 
+    deleteTransfer: () => {
+      return Rx.of(dummyIdTransfer);
     }
   };
 
@@ -67,9 +70,12 @@ describe('HistoryBillingComponent', () => {
     expect(messege.innerText).toEqual('No existen transferencias realizadas');
   })
 
-  it('Debe confirmar eliminar transferencia' , () => {
-    const dummyIdTransfer = 1;
-    expect(component.confirmDelete(dummyIdTransfer)).toBeTruthy();
+
+  it('Debe eliminar la transferencia', ()=> {
+    const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
+    const button_delete = fixture.nativeElement.querySelector('#button_delete');
+    button_delete.click();
+    expect(spyRedirect).toHaveBeenCalled();
   });
 
 });

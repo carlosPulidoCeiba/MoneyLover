@@ -75,12 +75,12 @@ describe('BillingService', () => {
 
         service.deleteTransfer(dummyIdTransferencia).subscribe(
             res => {
-                expect(res).toEqual(true);
+                expect(res).toEqual(1);
             }
         );
         const req = serviceMock.expectOne(`${environment.apiMock}transfers/${dummyIdTransferencia}`);
         expect(req.request.method).toBe('DELETE');
-        req.event(new HttpResponse<boolean>({ body: true }));
+        req.event(new HttpResponse<number>({ body: 1 }));
     })
 
 

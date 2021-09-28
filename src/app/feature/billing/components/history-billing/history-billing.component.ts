@@ -27,19 +27,6 @@ export class HistoryBillingComponent implements OnInit {
     });
   }
 
-  confirmDelete(id: number): boolean {
-    let confirmDelete = true;
-    this.toastService.toastConfirmDelete().then((result) => {
-      if (result.isConfirmed) {
-        confirmDelete = true;
-        this.deleteRegister(id);
-      } else {
-        confirmDelete = false;
-      }
-    });
-    return confirmDelete;
-  }
-
   deleteRegister(id: number): void {
     this.billingService.deleteTransfer(id).subscribe(
       () => {
