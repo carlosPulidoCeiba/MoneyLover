@@ -77,7 +77,7 @@ describe('HomeBillingComponent', () => {
     const spyRedirect = spyOn(component, 'transferToMe').and.callThrough();
     const messege = fixture.nativeElement.querySelector('#recargar'); 
     messege.click();
-
+    fixture.detectChanges();
     expect(spyRedirect).toHaveBeenCalled();
     
   })

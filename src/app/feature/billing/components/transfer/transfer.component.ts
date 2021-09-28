@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastService } from '@shared/services/toast.service';
 import * as moment from 'moment';
 import { Transfer } from '../../shared/models/transfer.interface';
@@ -12,26 +12,16 @@ import { BillingService } from '../../shared/services/billing.service';
 })
 export class TransferComponent implements OnInit {
 
-  public isToMe = false;
   public form: FormGroup;
 
   constructor(
     private router: Router,
     private toastService: ToastService,
-    protected billingService: BillingService,
-    private activeRoute: ActivatedRoute
+    protected billingService: BillingService
   ) { }
 
   ngOnInit(): void {
     this.createForm();
-    this.activeRoute.queryParams.subscribe(
-      params => {
-        ({ isToMe: this.isToMe } = params);
-        if (this.isToMe) {
-          this.configIsToMe();
-        }
-      }
-    );
   }
 
   createForm(): void {
@@ -45,14 +35,6 @@ export class TransferComponent implements OnInit {
     });
   }
 
-  configIsToMe(): void {
-    this.form.get('nombre').disable();
-    this.form.get('destino').disable();
-    this.form.patchValue({
-      nombre: 'Carlos',
-      destino: 'Carlos'
-    });
-  }
 
   messegeError(control: string): string {
     return `El campo ${control}, es requerido.`;
@@ -70,13 +52,7 @@ export class TransferComponent implements OnInit {
 
   send(): void {
     if (this.form.valid) {
-      const formValueIsToMe = {
-        ...this.form.value,
-        nombre: 'Carlos',
-        destino: 'Carlos'
-      };
-      const data = this.isToMe ? formValueIsToMe : this.form.value;
-      this.postTransfer(data);
+      this.postTransfer(this.form.value);
     }
   }
 

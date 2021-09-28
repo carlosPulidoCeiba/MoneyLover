@@ -75,6 +75,7 @@ describe('HistoryBillingComponent', () => {
     const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
     const button_delete = fixture.nativeElement.querySelector('#button_delete');
     button_delete.click();
+    fixture.detectChanges();
     expect(spyRedirect).toHaveBeenCalled();
   });
 
