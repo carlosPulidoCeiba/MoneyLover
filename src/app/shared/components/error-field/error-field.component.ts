@@ -1,16 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'error-field',
-  templateUrl: './error-campos-plantilla.component.html',
+  templateUrl: './error-field.component.html',
   styles: [`.hide {
     display: none;
-} `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  } `]
 })
-export class ErrorCamposPlantillaComponent {
-  mensajeError;
-  ocultar = true;
+export class ErrorFieldComponent {
 
   @Input()
   set text(value) {
@@ -21,6 +18,9 @@ export class ErrorCamposPlantillaComponent {
     }
   }
 
+  mensajeError: string;
+  ocultar = true;
+  
   constructor(private cdr: ChangeDetectorRef) {}
-}
 
+}
