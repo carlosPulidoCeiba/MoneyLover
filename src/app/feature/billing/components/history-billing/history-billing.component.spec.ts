@@ -62,21 +62,20 @@ describe('HistoryBillingComponent', () => {
     expect(component.transfers).toEqual(dummyTransfers);
   });
 
+  it('Debe eliminar la transferencia', ()=> {
+    const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
+    const button_delete = fixture.nativeElement.querySelector('#button_delete');
+    fixture.detectChanges();
+    button_delete.click();
+    expect(spyRedirect).toHaveBeenCalled();
+  });
+
   it('No hay transferencias', () => {
     dummyTransfers = [];
     component.ngOnInit();
     fixture.detectChanges();
     const messege = fixture.nativeElement.querySelector('#show_no_transfers');
     expect(messege.innerText).toEqual('No existen transferencias realizadas');
-  })
-
-
-  it('Debe eliminar la transferencia', ()=> {
-    const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
-    const button_delete = fixture.nativeElement.querySelector('#button_delete');
-    button_delete.click();
-    fixture.detectChanges();
-    expect(spyRedirect).toHaveBeenCalled();
   });
 
 });
