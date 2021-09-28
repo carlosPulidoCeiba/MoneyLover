@@ -57,16 +57,16 @@ describe('TransferComponent', () => {
 
   it('Mensaje de error', () => {
     const control = 'destino';
-    expect(component.messegeError(control)).toEqual('El campo destino, es requerido.')
+    expect(component.messegeError(control)).toEqual('El campo destino, es requerido.');
   });
 
-  it('Debe mostrar el componente de error', ()=> {
+  it('Debe mostrar el componente de error', () => {
     const control = 'destino';
     component.form.markAllAsTouched();
     expect(component.showMessegeError(control)).toBeTrue();
   });
 
-  it('Debe redireccionar hacia atras', ()=> {
+  it('Debe redireccionar hacia atras', () => {
     const backButton = fixture.debugElement.nativeElement.querySelector('#button_back');
     fixture.detectChanges();
     backButton.click();

@@ -13,7 +13,7 @@ describe('HomeBillingComponent', () => {
   let component: HomeBillingComponent;
   let fixture: ComponentFixture<HomeBillingComponent>;
   let transferServiceStub: Partial<BillingService>;
-  let dummyTransfers: Transfer[] = [
+  const dummyTransfers: Transfer[] = [
     new Transferencia({
       destino: 'Carlos',
       fecha: '25-September-2021',
@@ -61,7 +61,7 @@ describe('HomeBillingComponent', () => {
 
   it('Consula transferencias del usuario Carlos', () => {
     expect(component.currentValue).toEqual(totalValue);
-  })
+  });
 
   it('Crear rutas', () => {
     const quantityRoutes = 2;
@@ -73,13 +73,12 @@ describe('HomeBillingComponent', () => {
     expect(messege.innerText).toEqual('Transferir');
   });
 
-  it('Redirigir a recarga', ()=> {
+  it('Redirigir a recarga', () => {
     const spyRedirect = spyOn(component, 'transferToMe').and.callThrough();
-    const messege = fixture.nativeElement.querySelector('#recargar'); 
+    const messege = fixture.nativeElement.querySelector('#recargar');
     messege.click();
     fixture.detectChanges();
     expect(spyRedirect).toHaveBeenCalled();
-    
-  })
+  });
 
 });

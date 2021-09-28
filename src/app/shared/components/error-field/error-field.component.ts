@@ -20,7 +20,7 @@ export class ErrorFieldComponent {
 
   mensajeError: string;
   ocultar = true;
-  
-  constructor(private cdr: ChangeDetectorRef) {}
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
 }

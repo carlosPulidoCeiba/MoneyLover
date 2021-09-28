@@ -34,7 +34,7 @@ export class ToastService {
       },
       buttonsStyling: false
     });
-  
+
     return swalWithBootstrapButtons.fire({
       title: '¿Estás seguro?',
       text: '¿Deseas eliminar este registro?',

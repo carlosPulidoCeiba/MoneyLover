@@ -13,7 +13,7 @@ describe('ToastService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('Mostrar sweetalert Exitoso', ()=> {
+  it('Mostrar sweetalert Exitoso', () => {
     const spynToastSucces = spyOn(service, 'toastSucces').and.callThrough();
     service.toastSucces();
     expect(spynToastSucces).toHaveBeenCalled();

@@ -16,7 +16,7 @@ export class BillingService {
     return this.httpService.doPost(url, data);
   }
 
-  getTransfers():Observable<Transfer[]> {
+  getTransfers(): Observable<Transfer[]> {
     const url = environment.apiMock + 'transfers';
     return this.httpService.doGet(url);
   }

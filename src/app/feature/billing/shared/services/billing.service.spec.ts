@@ -1,11 +1,11 @@
-import { HttpResponse } from "@angular/common/http";
-import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
-import { TestBed } from "@angular/core/testing";
-import { HttpService } from "@core/services/http.service";
-import { environment } from "@env/environment";
-import { Transfer } from "../models/transfer.interface";
-import { Transferencia } from "../models/transfer.model";
-import { BillingService } from "./billing.service"
+import { HttpResponse } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+import { HttpService } from '@core/services/http.service';
+import { environment } from '@env/environment';
+import { Transfer } from '../models/transfer.interface';
+import { Transferencia } from '../models/transfer.model';
+import { BillingService } from './billing.service';
 
 
 
@@ -46,7 +46,7 @@ describe('BillingService', () => {
         const req = serviceMock.expectOne(`${environment.apiMock}transfers`);
         expect(req.request.method).toBe('POST');
         req.event(new HttpResponse<boolean>({ body: true }));
-    })
+    });
 
     it('Debe traer las trasnferencias', () => {
         const lengthTransfers = 1;
@@ -81,7 +81,5 @@ describe('BillingService', () => {
         const req = serviceMock.expectOne(`${environment.apiMock}transfers/${dummyIdTransferencia}`);
         expect(req.request.method).toBe('DELETE');
         req.event(new HttpResponse<number>({ body: 1 }));
-    })
-
-
-})
+    });
+});
