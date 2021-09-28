@@ -22,4 +22,10 @@ describe('ErrorFieldComponent', () => {
   it('Debe crearse', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Debe mostrar el mensaje', () => {
+    component.text = 'Error en el campo';
+    expect(component.ocultar).toBeFalse();
+  });
+
 });
