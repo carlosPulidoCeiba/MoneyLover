@@ -64,11 +64,8 @@ describe('HistoryBillingComponent', () => {
 
   it('Debe eliminar la transferencia', async () => {
     const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
-    component.ngOnInit();
+    component.deleteRegister(dummyIdTransfer);
     fixture.detectChanges();
-    const button_delete = await fixture.nativeElement.querySelector('#button_delete');
-    fixture.detectChanges();
-    button_delete.click();
     expect(spyRedirect).toHaveBeenCalled();
   });
 
