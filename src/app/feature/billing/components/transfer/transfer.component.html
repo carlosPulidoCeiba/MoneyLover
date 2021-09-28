@@ -18,7 +18,7 @@
                     <label class="col-form-label">
                         Nombre
                     </label>
-                    <input type="text" class="form-control" formControlName="nombre">
+                    <input type="text" class="form-control" formControlName="nombre" id="nombre_input">
                     <ng-container *ngIf="showMessegeError('nombre')">
                         <error-field [text]="messegeError('nombre')"></error-field>
                     </ng-container>
@@ -28,7 +28,7 @@
                     <label class="col-form-label">
                         Monto
                     </label>
-                    <input type="number" class="form-control" formControlName="monto">
+                    <input type="number" class="form-control" formControlName="monto" id="monto_input">
                     <ng-container *ngIf="showMessegeError('monto')">
                         <error-field [text]="messegeError('monto')"></error-field>
                     </ng-container>
@@ -38,7 +38,7 @@
                     <label class=" col-form-label">
                         Destino
                     </label>
-                    <input type="text" class="form-control" formControlName="destino">
+                    <input type="text" class="form-control" formControlName="destino" id="destino_input">
                     <ng-container *ngIf="showMessegeError('destino')">
                         <error-field [text]="messegeError('destino')"></error-field>
                     </ng-container>
