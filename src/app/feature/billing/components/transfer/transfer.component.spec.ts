@@ -42,7 +42,12 @@ describe('TransferComponent', () => {
   });
 
   it('Crear Transferencia', () => {
-    expect(component.postTransfer(dummyTransfers)).toBeTruthy();
+    const spyRedirect = spyOn(component, 'postTransfer').and.callThrough();
+    const sendButton = fixture.debugElement.nativeElement.querySelector('#button_send');
+    sendButton.click();
+    fixture.detectChanges();
+    component.postTransfer(dummyTransfers);
+    expect(spyRedirect).toHaveBeenCalled();
   });
 
   it('Boton deshabilitado, formulario invalido', () => {

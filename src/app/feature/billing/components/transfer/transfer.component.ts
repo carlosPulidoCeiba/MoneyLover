@@ -52,14 +52,13 @@ export class TransferComponent implements OnInit {
 
   postTransfer(data: Transfer): boolean {
     let success = true;
-    if (this.form.valid) {
-      this.billingService.transfer(data).subscribe(() => {
-        this.toastService.toastSucces();
-        this.goToBack();
-      }, () => {
-        success = false;
-      });
-    }
+    this.billingService.transfer(data).subscribe(() => {
+      this.toastService.toastSucces();
+      this.goToBack();
+    }, () => {
+      success = false;
+    });
+
     return success;
   }
 
