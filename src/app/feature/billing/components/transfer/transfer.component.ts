@@ -50,20 +50,16 @@ export class TransferComponent implements OnInit {
     );
   }
 
-  send(): void {
-    if (this.form.valid) {
-      this.postTransfer(this.form.value);
-    }
-  }
-
   postTransfer(data: Transfer): boolean {
     let success = true;
-    this.billingService.transfer(data).subscribe(() => {
-      this.toastService.toastSucces();
-      this.goToBack();
-    }, () => {
-      success = false;
-    });
+    if (this.form.valid) {
+      this.billingService.transfer(data).subscribe(() => {
+        this.toastService.toastSucces();
+        this.goToBack();
+      }, () => {
+        success = false;
+      });
+    }
     return success;
   }
 

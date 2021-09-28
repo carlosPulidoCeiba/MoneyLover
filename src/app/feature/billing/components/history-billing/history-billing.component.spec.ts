@@ -33,7 +33,7 @@ describe('HistoryBillingComponent', () => {
   transferServiceStub = {
     getTransfers: () => {
       return Rx.of(dummyTransfers);
-    }, 
+    },
     deleteTransfer: () => {
       return Rx.of(dummyIdTransfer);
     }
@@ -62,9 +62,11 @@ describe('HistoryBillingComponent', () => {
     expect(component.transfers).toEqual(dummyTransfers);
   });
 
-  it('Debe eliminar la transferencia', ()=> {
+  it('Debe eliminar la transferencia', async () => {
     const spyRedirect = spyOn(component, 'deleteRegister').and.callThrough();
-    const button_delete = fixture.nativeElement.querySelector('#button_delete');
+    component.ngOnInit();
+    fixture.detectChanges();
+    const button_delete = await fixture.nativeElement.querySelector('#button_delete');
     fixture.detectChanges();
     button_delete.click();
     expect(spyRedirect).toHaveBeenCalled();

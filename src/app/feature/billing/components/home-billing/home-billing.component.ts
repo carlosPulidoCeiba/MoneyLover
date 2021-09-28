@@ -35,8 +35,6 @@ export class HomeBillingComponent implements OnInit {
   }
 
   transferToMe(): void {
-    this.router.navigate(['billing/transfer'], {
-      queryParams: { isToMe: true },
-    });
+    this.router.navigate(['billing/transfer']);
   }
 }

@@ -62,6 +62,9 @@ describe('TransferComponent', () => {
   });
 
   it('Debe redireccionar hacia atras', ()=> {
+    const backButton = fixture.debugElement.nativeElement.querySelector('#button_back');
+    fixture.detectChanges();
+    backButton.click();
     const redirect = spyOn(component, 'goToBack');
     component.goToBack();
     expect(redirect).toHaveBeenCalled();
